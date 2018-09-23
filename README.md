@@ -23,6 +23,8 @@ Crear un microservicio para encriptar documentos (PDF) y alojarlos en la nube.
 
 #### Colaboración
 
-Proyecto en colaboración con el proyecto: [Microservicio de Carlos](https://github.com/AGCarlos/IV_1819_Proyecto).
+Proyecto en colaboración con el proyecto: [Microservicio de Carlos](https://github.com/AGCarlos/IV_1819_Proyecto). Que se encargará de enviar los documentos a destinatarios.
 
-Que se encargará de enviar los documentos a destinatarios.
+| [![Carlos Ariza García](https://github.com/AGCarlos.png?size=100)](https://github.com/AGCarlos) | [![Fernando Talavera Mendoza](https://github.com/Thejokeri.png?size=100)](https://github.com/Thejokeri) |
+| :---: | :---: |
+| [Carlos Ariza García](https://github.com/AGCarlos) | [Fernando Talavera Mendoza](https://github.com/Thejokeri) |
