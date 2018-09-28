@@ -6,16 +6,17 @@ Proyecto de la asignatura de Infraestructura Virtual (2018-2019)
 
 ### Idea Principal
 
----
+Crear un microservicio para encriptar documentos (PDF) y alojarlos en la nube. El objetivo principal, es la creación de un servicio
+para que usuarios (en nuestro caso, personal sanitario) puedan almacenar archivos cifrados con información personal de los pacientes, garantizando la ley de protección de datos y de poder enviar dichos archivos a otros personales sanitarios, a través de una red segura.
 
-Crear un microservicio para encriptar documentos (PDF) y alojarlos en la nube.
+---
 
 ### Herramientas
 
----
+Estas son las herramientas que voy a utilizar parar la creación del microservicio:
 
-* [Python.](https://www.python.org)
-* [pyPdf 1.13.](https://pypi.org/project/pyPdf/)
+* [Python](https://www.python.org)
+* [pyPdf 1.13](https://pypi.org/project/pyPdf/)
 * [Django](https://www.djangoproject.com)
 * [DEPOT - File Storage Made Easy](https://depot.readthedocs.io/en/latest/)
 * [POSTGRESQL](https://www.postgresql.org)
