@@ -30,3 +30,5 @@ Proyecto en colaboración con el proyecto: [Microservicio de Carlos](https://git
 | [![Carlos Ariza García](https://github.com/AGCarlos.png?size=100)](https://github.com/AGCarlos) | [![Fernando Talavera Mendoza](https://github.com/Thejokeri.png?size=100)](https://github.com/Thejokeri) |
 | :---: | :---: |
 | [Carlos Ariza García](https://github.com/AGCarlos) | [Fernando Talavera Mendoza](https://github.com/Thejokeri) |
+
+---
