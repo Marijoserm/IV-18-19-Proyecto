@@ -16,6 +16,9 @@ Crear un microservicio para encriptar documentos (PDF) y alojarlos en la nube.
 
 * [Python.](https://www.python.org)
 * [pyPdf 1.13.](https://pypi.org/project/pyPdf/)
+* [Django](https://www.djangoproject.com)
+* [DEPOT - File Storage Made Easy](https://depot.readthedocs.io/en/latest/)
+* [POSTGRESQL](https://www.postgresql.org)
 
 ---
 
