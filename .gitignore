@@ -114,3 +114,9 @@ venv.bak/
 dmypy.json
 
 .DS_Store
+
+# mis gitignore
+*.sh
+*.ini
+venv/
+.vscode/
