@@ -1,6 +1,4 @@
 #!/usr/bin/python
-from flask import Flask
-app = Flask(__name__)
 
 class PDFUpload:
     def __init__(self):
@@ -20,6 +18,12 @@ class PDFUpload:
         bool: if the user exist or not.
     
         """
+        if type(user) is int or type(user) is float:
+            return False
+
+        if not user:
+            return False
+
         return user in self.almacen
 
     def CreateUser(self, user):
@@ -33,8 +37,14 @@ class PDFUpload:
         bool: created succesfully.
     
         """
+        if type(user) is int or type(user) is float:
+            return False
+
+        if not user:
+            return False
+
         self.almacen.update({user : []})
-        self.IsUser(user)
+        return self.IsUser(user)
 
 
     def DeleteUser(self, user):
@@ -48,8 +58,16 @@ class PDFUpload:
         bool: delete succesfully.
     
         """
+        if type(user) is int or type(user) is float:
+            return False
 
-    def IsFile(self, user,path):
+        if not user:
+            return False
+
+        self.almacen.pop(user, None)
+        return not self.IsUser(user)
+
+    def IsFile(self, user, f):
         """ 
         Check if the path exists in the dictionary and if the pdf file is on the file system.
     
@@ -60,24 +78,43 @@ class PDFUpload:
         bool: if the pdf exist or not.
     
         """
+        if type(user) is int or type(user) is float:
+            return False
 
-    def AddNewFile(self, user, pdffile):
+        if type(f) is int or type(f) is float:
+            return False
+
+        if not user or not f:
+            return False
+
+        return user in self.almacen and f in self.almacen[user]
+
+    def AddNewFile(self, user, f):
         """ 
         Add a new file to the dictionary. The name of the file must be different from the others in the same directory.
     
         Parameters: 
         user -- the id of the user.
-        pdffile -- the file of the user.
+        f -- the file of the user.
     
         Returns: 
         bool: added succesfully.
     
         """
+        if type(user) is int or type(user) is float:
+            return False
+        
+        if type(f) is int or type(f) is float:
+            return False
+        
+        if not user or not f:
+            return False
+
         if self.IsUser(user):
-            self.almacen[user[0]].append(pdffile)
+            self.almacen[user].append(f)
+            return self.IsFile(user,f)
 
-
-    def DeleteFile(self, path):
+    def DeleteFile(self, user, f):
         """ 
         Add a new file to the dictionary. The name of the file must be different from the others in the same directory.
     
@@ -88,3 +125,14 @@ class PDFUpload:
         bool: added succesfully.
     
         """
+        if type(user) is int or type(user) is float:
+            return False
+        
+        if type(f) is int or type(f) is float:
+            return False
+        
+        if not user or not f:
+            return False
+
+        self.almacen[user].remove(f)
+        return not self.IsFile(user, f)
