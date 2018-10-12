@@ -2,14 +2,66 @@ from pdfupload import PDFUpload
 
 pdfupload = PDFUpload()
 
-# Comprueba si devuelve status OK
+# Test del status
 
 def testStatus():
     assert pdfupload.Status() == "OK"
 
-# Comprueba si existe el usuario
+# Test de verificar la existencia del usuario
 
 def testIsUser():
+    assert pdfupload.IsUser(1) == False
+    assert pdfupload.IsUser(1.0) == False
+    assert pdfupload.IsUser('test') == False
+
+# Test de creacion de usuario
+
+def testCreateUser():
+    assert pdfupload.CreateUser('') == False
+    assert pdfupload.CreateUser(1) == False
+    assert pdfupload.CreateUser(1.0) == False
+    assert pdfupload.CreateUser('test') == True
+
+# Test de eliminacion del usuario
+
+def testDeleteUser():
+    assert pdfupload.DeleteUser('') == False
+    assert pdfupload.DeleteUser(1) == False
+    assert pdfupload.DeleteUser(1.0) == False
+    assert pdfupload.DeleteUser('test') == False
+
     pdfupload.CreateUser('test')
-    assert pdfupload.IsUser('') == False
-    asser pdfupload.IsUser('test') == True
+    assert pdfupload.DeleteUser('test') == True
+
+# Test de verificar la existencia del archivo
+
+def testIsFile():
+    assert pdfupload.IsFile(1,1) == False
+    assert pdfupload.IsFile(1.0,1.0) == False
+    assert pdfupload.IsFile(1,1.0) == False
+    assert pdfupload.IsFile(1.0,1) == False
+    assert pdfupload.IsFile('test','pdftest.pdf') == False
+
+# Test de agregar el archivo
+
+def testAddNewFile():
+    assert pdfupload.AddNewFile('','') == False
+    assert pdfupload.AddNewFile(1,1) == False
+    assert pdfupload.AddNewFile(1.0,1) == False
+    assert pdfupload.AddNewFile(1,1.0) == False
+    assert pdfupload.AddNewFile(1.0,1.0) == False
+    assert pdfupload.AddNewFile('test','pdftest') == True
+
+# Test de eliminacion del archivo
+
+def testDeleteFile():
+    assert pdfupload.DeleteFile('','') == False
+    assert pdfupload.DeleteFile(1,1) == False
+    assert pdfupload.DeleteFile(1.0,1) == False
+    assert pdfupload.DeleteFile(1,1.0) == False
+    assert pdfupload.DeleteFile(1.0,1.0) == False
+    assert pdfupload.DeleteFile('test','pdftest') == False
+
+    pdfupload.CreateUser('test')
+    pdfupload.AddNewFile('test', 'pdftest.pdf')
+    assert pdfupload.DeleteFile('test','pdftest.pdf') == True
