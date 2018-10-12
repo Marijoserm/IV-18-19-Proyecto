@@ -6,3 +6,10 @@ pdfupload = PDFUpload()
 
 def testStatus():
     assert pdfupload.Status() == "OK"
+
+# Comprueba si existe el usuario
+
+def testIsUser():
+    pdfupload.CreateUser('test')
+    assert pdfupload.IsUser('') == False
+    asser pdfupload.IsUser('test') == True

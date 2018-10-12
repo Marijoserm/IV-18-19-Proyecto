@@ -1,15 +1,17 @@
 #!/usr/bin/python
+from flask import Flask
+app = Flask(__name__)
 
 class PDFUpload:
     def __init__(self):
-        self.almacen = []    
+        self.almacen = {}    
 
     def Status(self):
         return "OK"
 
     def IsUser(self, user):
         """ 
-        Check if the user exists in the database.
+        Check if the user exists in the dictionary.
     
         Parameters: 
         user -- the id of the user to find.
@@ -18,19 +20,11 @@ class PDFUpload:
         bool: if the user exist or not.
     
         """
-        sql = """SELECT * FROM usuarios WHERE id_user = %s"""
-
-        conn = self.get_conn()
-        cur = conn.cursor()
-        cur.execute(sql, (user,))
-        filas = cur.rowcount
-        cur.close()
-
-        return filas != 0
+        return user in self.almacen
 
     def CreateUser(self, user):
         """ 
-        Add a new user to the data base. Must be an different user that is not in the database.
+        Add a new user to the dictionary. Must be an different user that is not in the dictionary.
     
         Parameters: 
         user -- the id of the user.
@@ -39,27 +33,13 @@ class PDFUpload:
         bool: created succesfully.
     
         """
+        self.almacen.update({user : []})
+        self.IsUser(user)
 
-        sql = """INSERT INTO usuarios VALUES (%s,%s) RETURNING id_user;"""
-
-        user_id = None
-
-        if(not self.IsUser(user)):
-            try:
-                conn = self.get_conn()
-                cur = conn.cursor()
-                cur.execute(sql, (user,"/tmp/"))
-                user_id = str(cur.fetchone()[0])
-                conn.commit()
-                cur.close()
-            except (Exception, psycopg2.DatabaseError) as error:
-                print(error)
-        
-        return user_id == user
 
     def DeleteUser(self, user):
         """ 
-        Delete a user from the data base. Must exist the user in the database.
+        Delete a user from the dictionary. Must exist the user in the dictionary.
     
         Parameters: 
         user -- the id of the user.
@@ -68,24 +48,10 @@ class PDFUpload:
         bool: delete succesfully.
     
         """
-        sql = """DELETE FROM usuarios WHERE user_id = %s;"""
-
-        try:
-            conn = self.get_conn()
-            cur = conn.cursor()
-            
-            cur.execute(sql, (user,))
-            rows_deleted = cur.rowncount
-            conn.commit()
-            cur.close()
-        except (Exception, psycopg2.DatabaseError) as error:
-            print(error)
-    
-        return rows_deleted != 0
 
     def IsFile(self, user,path):
         """ 
-        Check if the path exists in the database and if the pdf file is on the file system.
+        Check if the path exists in the dictionary and if the pdf file is on the file system.
     
         Parameters: 
         path -- the path of the pdf file to find.
@@ -94,33 +60,26 @@ class PDFUpload:
         bool: if the pdf exist or not.
     
         """
-        
-        sql = """SELECT * FROM usuarios WHERE id_user = %s and dir_file = %s"""
 
-        conn = self.get_conn()
-        cur = conn.cursor()
-        cur.execute(sql, (user,path))
-        filas = cur.rowcount
-        cur.close()
-
-        return filas != 0
-
-    def AddNewFile(self, path):
+    def AddNewFile(self, user, pdffile):
         """ 
-        Add a new file to the data base. The name of the file must be different from the others in the same directory.
+        Add a new file to the dictionary. The name of the file must be different from the others in the same directory.
     
         Parameters: 
-        path -- the path of the file.
+        user -- the id of the user.
+        pdffile -- the file of the user.
     
         Returns: 
         bool: added succesfully.
     
         """
+        if self.IsUser(user):
+            self.almacen[user[0]].append(pdffile)
 
 
     def DeleteFile(self, path):
         """ 
-        Add a new file to the data base. The name of the file must be different from the others in the same directory.
+        Add a new file to the dictionary. The name of the file must be different from the others in the same directory.
     
         Parameters: 
         path -- the path of the file.
