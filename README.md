@@ -1,5 +1,7 @@
 # IV-18-19-Proyecto
 
+[![Build Status](https://travis-ci.com/Thejokeri/IV-18-19-Proyecto.svg?branch=master)](https://travis-ci.com/Thejokeri/IV-18-19-Proyecto)
+
 ## CloudyCloud
 
 Proyecto de la asignatura de Infraestructura Virtual (2018-2019)
@@ -17,7 +19,7 @@ Estas son las herramientas que voy a utilizar parar la creación del microservic
 
 * [Python](https://www.python.org)
 * [pyPdf 1.13](https://pypi.org/project/pyPdf/)
-* [Django REST](http://www.django-rest-framework.org)
+* [Flask](http://flask.pocoo.org/)
 * [DEPOT - File Storage Made Easy](https://depot.readthedocs.io/en/latest/)
 * [POSTGRESQL](https://www.postgresql.org)
 
