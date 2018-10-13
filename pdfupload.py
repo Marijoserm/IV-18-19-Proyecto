@@ -59,7 +59,7 @@ class PDFUpload:
         if not user:
             return False
 
-        self.almacen.update({user : {}})
+        self.almacen.update({user : set()))
         return self.IsUser(user)
 
 
