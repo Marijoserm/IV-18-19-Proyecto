@@ -5,7 +5,23 @@ class PDFUpload:
         self.almacen = {}    
 
     def Status(self):
+        """
+        Return the status of the class
+        
+        Returns:
+        string: return OK
+        """
         return "OK"
+
+    def DeleteStore(self):
+        """
+        Clear the storage
+
+        Returns:
+        bool: if the dictionary is empty
+        """
+        self.almacen.clear()
+        return not bool(self.almacen)
 
     def IsUser(self, user):
         """ 
