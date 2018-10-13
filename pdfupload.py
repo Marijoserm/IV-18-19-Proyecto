@@ -24,25 +24,20 @@ class PDFUpload:
         Returns:
         bool: if the arguments are string
         """
-        salida = True
 
         if text != 'none':
-            if type(text) is int or type(text) is float:
+            if type(text) is int or type(text) is float or not text:
                 salida = False
-
-            if not text:
-                salida = False
+            else:
+                salida = True
         else:
-            salida = True
-        
-        if text != 'none' and text1 != 'none':
-            if (type(text) is int or type(text) is float) and (type(text1) is int or type(text1) is float):
+            if text != 'none' and text1 != 'none':
+                if (type(text) is int or type(text) is float) and (type(text1) is int or type(text1) is float) and (not text or not text1):
+                    salida = False
+                else:
+                    salida = True
+            else:
                 salida = False
-
-            if not text or not text1:
-                salida = False
-        else:
-            salida = True
 
         return salida
 
@@ -197,4 +192,18 @@ class PDFUpload:
             if self.IsUser(user):
                 list = self.almacen[user]
                 matching = [s for s in list if search in s]
+        
         return matching
+
+if __name__ == '__main__':
+    pdf = PDFUpload()
+
+    print(pdf.CheckArguments('test'))
+    print(pdf.CheckArguments('test','pdftest.pdf'))
+
+    pdf.CreateUser('test')
+    pdf.AddNewFile('test','pdftest.pdf')
+    pdf.AddNewFile('test','pdftest1.pdf')
+    
+    print(pdf.almacen)
+    print(len(pdf.SearchFile('test','')))

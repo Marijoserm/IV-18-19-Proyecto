@@ -99,10 +99,10 @@ def testDeleteFile():
 
 def testSearchFile():
     assert len(pdfupload.SearchFile('','')) == 0
-    assert len(pdfupload.DeleteFile(1,1)) == 0
-    assert len(pdfupload.DeleteFile(1.0,1)) == 0
-    assert len(pdfupload.DeleteFile(1,1.0)) == 0
-    assert len(pdfupload.DeleteFile(1.0,1.0)) == 0
+    assert len(pdfupload.SearchFile(1,1)) == 0
+    assert len(pdfupload.SearchFile(1.0,1)) == 0
+    assert len(pdfupload.SearchFile(1,1.0)) == 0
+    assert len(pdfupload.SearchFile(1.0,1.0)) == 0
 
     pdfupload.CreateUser('test')
     pdfupload.AddNewFile('test', 'pdftest.pdf')
