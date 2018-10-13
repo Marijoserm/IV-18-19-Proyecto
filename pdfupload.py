@@ -180,7 +180,7 @@ class PDFUpload:
 
         Parameters:
         user -- the id of the user.
-        search -- the search of the user´s storage.
+        search -- the search of the user's storage.
 
         Returns:
         Array: the files resulting from the search
