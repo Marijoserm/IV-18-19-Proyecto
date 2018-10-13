@@ -64,12 +64,11 @@ class PDFUpload:
         if not user:
             return False
 
-        salida = self.almacen.pop(user, None)
-        
-        if salida is None:
+        if self.IsUser(user):
+            self.almacen.pop(user, None)
+            return True
+        else:
             return False
-
-        return not self.IsUser(user)
 
     def IsFile(self, user, f):
         """ 
