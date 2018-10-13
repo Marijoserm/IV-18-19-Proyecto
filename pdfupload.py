@@ -145,14 +145,3 @@ class PDFUpload:
             return not self.IsFile(user, f)
         else:
             return False
-        
-
-if __name__ == '__main__':  
-    pdf = PDFUpload()
-
-    pdf.CreateUser('test')
-    pdf.AddNewFile('test','pdftest.pdf')
-    test = pdf.DeleteFile('test','pdftest1.pdf')
-
-    print(pdf.almacen)
-    print(test)
