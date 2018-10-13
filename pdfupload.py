@@ -13,6 +13,39 @@ class PDFUpload:
         """
         return "OK"
 
+    def CheckArguments(self, text='none', text1='none'):
+        """
+        Check if the arguments are not int, float or None. Must be a string
+
+        Parameters:
+        text -- first argument. Default 'none'
+        text1 -- second argument. Default 'none'
+
+        Returns:
+        bool: if the arguments are string
+        """
+        salida = True
+
+        if text != 'none':
+            if type(text) is int or type(text) is float:
+                salida = False
+
+            if not text:
+                salida = False
+        else:
+            salida = True
+        
+        if text != 'none' and text1 != 'none':
+            if (type(text) is int or type(text) is float) and (type(text1) is int or type(text1) is float):
+                salida = False
+
+            if not text or not text1:
+                salida = False
+        else:
+            salida = True
+
+        return salida
+
     def DeleteStore(self):
         """
         Clear the storage
@@ -22,7 +55,7 @@ class PDFUpload:
         """
         self.almacen.clear()
         return not bool(self.almacen)
-
+    
     def IsUser(self, user):
         """ 
         Check if the user exists in the dictionary.
@@ -34,13 +67,12 @@ class PDFUpload:
         bool: if the user exist or not.
     
         """
-        if type(user) is int or type(user) is float:
-            return False
+        salida = self.CheckArguments(user)
+        
+        if salida:
+            return user in self.almacen
 
-        if not user:
-            return False
-
-        return user in self.almacen
+        return salida
 
     def CreateUser(self, user):
         """ 
@@ -53,15 +85,14 @@ class PDFUpload:
         bool: created succesfully.
     
         """
-        if type(user) is int or type(user) is float:
-            return False
+        salida = self.CheckArguments(user)
+        
+        if salida:
+            s = set()
+            self.almacen.update({user : s})
+            return self.IsUser(user)
 
-        if not user:
-            return False
-
-        self.almacen.update({user : set()))
-        return self.IsUser(user)
-
+        return salida
 
     def DeleteUser(self, user):
         """ 
@@ -74,17 +105,16 @@ class PDFUpload:
         bool: delete succesfully.
     
         """
-        if type(user) is int or type(user) is float:
-            return False
-
-        if not user:
-            return False
-
-        if self.IsUser(user):
-            self.almacen.pop(user, None)
-            return True
-        else:
-            return False
+        salida = self.CheckArguments(user)
+        
+        if salida:
+            if self.IsUser(user):
+                self.almacen.pop(user, None)
+                return True
+            else:
+                return False
+        
+        return salida
 
     def IsFile(self, user, f):
         """ 
@@ -97,16 +127,12 @@ class PDFUpload:
         bool: if the pdf exist or not.
     
         """
-        if type(user) is int or type(user) is float:
-            return False
-
-        if type(f) is int or type(f) is float:
-            return False
-
-        if not user or not f:
-            return False
-
-        return user in self.almacen and f in self.almacen[user]
+        salida = self.CheckArguments(user, f)
+        
+        if salida:
+            return user in self.almacen and f in self.almacen[user]
+        
+        return salida
 
     def AddNewFile(self, user, f):
         """ 
@@ -120,20 +146,16 @@ class PDFUpload:
         bool: added succesfully.
     
         """
-        if type(user) is int or type(user) is float:
-            return False
-        
-        if type(f) is int or type(f) is float:
-            return False
-        
-        if not user or not f:
-            return False
+        salida = self.CheckArguments(user, f)
 
-        if self.IsUser(user):
-            self.almacen[user].add(f)
-            return self.IsFile(user,f)
-        else:
-            return False
+        if salida:
+            if self.IsUser(user):
+                self.almacen[user].add(f)
+                return self.IsFile(user,f)
+            else:
+                return False
+        
+        return salida
 
     def DeleteFile(self, user, f):
         """ 
@@ -146,17 +168,33 @@ class PDFUpload:
         bool: added succesfully.
     
         """
-        if type(user) is int or type(user) is float:
-            return False
+        salida = self.CheckArguments(user,f)
         
-        if type(f) is int or type(f) is float:
-            return False
-        
-        if not user or not f:
-            return False
-        
-        if self.IsUser(user) and self.IsFile(user,f):
-            self.almacen[user].remove(f)
-            return True
-        else:
-            return False
+        if salida:
+            if self.IsUser(user) and self.IsFile(user,f):
+                self.almacen[user].remove(f)
+                return True
+            else:
+                return False
+
+        return salida
+
+    def SearchFile(self, user, search):
+        """
+        Search all the files that are similar to name.
+
+        Parameters:
+        user -- the id of the user.
+        search -- the search of the user´s storage.
+
+        Returns:
+        Array: the files resulting from the search
+        """
+        salida = self.CheckArguments(user)
+        matching = []
+
+        if salida:
+            if self.IsUser(user):
+                list = self.almacen[user]
+                matching = [s for s in list if search in s]
+        return matching
