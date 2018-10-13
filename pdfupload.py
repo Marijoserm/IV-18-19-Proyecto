@@ -130,7 +130,7 @@ class PDFUpload:
             return False
 
         if self.IsUser(user):
-            self.almacen[user].append(f)
+            self.almacen[user].add(f)
             return self.IsFile(user,f)
         else:
             return False
