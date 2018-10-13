@@ -194,16 +194,3 @@ class PDFUpload:
                 matching = [s for s in list if search in s]
         
         return matching
-
-if __name__ == '__main__':
-    pdf = PDFUpload()
-
-    print(pdf.CheckArguments('test'))
-    print(pdf.CheckArguments('test','pdftest.pdf'))
-
-    pdf.CreateUser('test')
-    pdf.AddNewFile('test','pdftest.pdf')
-    pdf.AddNewFile('test','pdftest1.pdf')
-    
-    print(pdf.almacen)
-    print(len(pdf.SearchFile('test','')))
