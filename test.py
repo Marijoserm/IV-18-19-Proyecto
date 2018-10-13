@@ -2,10 +2,25 @@ from pdfupload import PDFUpload
 
 pdfupload = PDFUpload()
 
-# Test del status
+# Test del Status
 
 def testStatus():
     assert pdfupload.Status() == "OK"
+
+# Test del CheckArguments
+
+def testChechArguments():
+    assert pdfupload.CheckArguments() == False
+    assert pdfupload.CheckArguments('') == False
+    assert pdfupload.CheckArguments(1) == False
+    assert pdfupload.CheckArguments(1.0) == False
+    assert pdfupload.CheckArguments('','') == False
+    assert pdfupload.CheckArguments(1,1) == False
+    assert pdfupload.CheckArguments(1,1.0) == False
+    assert pdfupload.CheckArguments(1.0,1) == False
+    assert pdfupload.CheckArguments(1.0,1.0) == False
+    assert pdfupload.CheckArguments('test') == True
+    assert pdfupload.CheckArguments('test','pdftest.pdf') == True
 
 # Test del DeleteStore
 
@@ -79,3 +94,18 @@ def testDeleteFile():
     pdfupload.AddNewFile('test', 'pdftest.pdf')
     assert pdfupload.DeleteFile('test','pdftest.pdf') == True
     pdfupload.DeleteStore()
+
+# Test de la busqueda de archivos
+
+def testSearchFile():
+    assert len(pdfupload.SearchFile('','')) == 0
+    assert len(pdfupload.DeleteFile(1,1)) == 0
+    assert len(pdfupload.DeleteFile(1.0,1)) == 0
+    assert len(pdfupload.DeleteFile(1,1.0)) == 0
+    assert len(pdfupload.DeleteFile(1.0,1.0)) == 0
+
+    pdfupload.CreateUser('test')
+    pdfupload.AddNewFile('test', 'pdftest.pdf')
+    assert len(pdfupload.SearchFile('test','pdf')) == 1
+    pdfupload.AddNewFile('test', 'pdftest1.pdf')
+    assert len(pdfupload.SearchFile('test','pdf')) == 2
