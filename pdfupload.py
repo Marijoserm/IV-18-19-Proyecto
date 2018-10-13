@@ -64,7 +64,11 @@ class PDFUpload:
         if not user:
             return False
 
-        self.almacen.pop(user, None)
+        salida = self.almacen.pop(user, None)
+        
+        if salida is None:
+            return False
+
         return not self.IsUser(user)
 
     def IsFile(self, user, f):
@@ -113,6 +117,8 @@ class PDFUpload:
         if self.IsUser(user):
             self.almacen[user].append(f)
             return self.IsFile(user,f)
+        else:
+            return False
 
     def DeleteFile(self, user, f):
         """ 
@@ -134,5 +140,19 @@ class PDFUpload:
         if not user or not f:
             return False
 
-        self.almacen[user].remove(f)
-        return not self.IsFile(user, f)
+        if f in self.almacen[user]:
+            self.almacen[user].remove(f)
+            return not self.IsFile(user, f)
+        else:
+            return False
+        
+
+if __name__ == '__main__':  
+    pdf = PDFUpload()
+
+    pdf.CreateUser('test')
+    pdf.AddNewFile('test','pdftest.pdf')
+    test = pdf.DeleteFile('test','pdftest1.pdf')
+
+    print(pdf.almacen)
+    print(test)
