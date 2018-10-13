@@ -50,7 +50,10 @@ def testAddNewFile():
     assert pdfupload.AddNewFile(1.0,1) == False
     assert pdfupload.AddNewFile(1,1.0) == False
     assert pdfupload.AddNewFile(1.0,1.0) == False
-    assert pdfupload.AddNewFile('test','pdftest') == True
+    assert pdfupload.AddNewFile('test','pdftest') == False
+
+    pdfupload.CreateUser('test')
+    assert pdfupload.AddNewFile('test','pdftest.pdf') == True
 
 # Test de eliminacion del archivo
 
