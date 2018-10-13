@@ -59,7 +59,7 @@ class PDFUpload:
         if not user:
             return False
 
-        self.almacen.update({user : []})
+        self.almacen.update({user : {}})
         return self.IsUser(user)
 
 
@@ -154,9 +154,9 @@ class PDFUpload:
         
         if not user or not f:
             return False
-
-        if f in self.almacen[user]:
+        
+        if self.IsUser(user) and self.IsFile(user,f):
             self.almacen[user].remove(f)
-            return not self.IsFile(user, f)
+            return True
         else:
             return False
