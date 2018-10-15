@@ -9,7 +9,7 @@ def testStatus():
 
 # Test del CheckArguments
 
-def testChechArguments():
+def testCheckArguments():
     assert pdfupload.CheckArguments() == False
     assert pdfupload.CheckArguments('') == False
     assert pdfupload.CheckArguments(1) == False
