@@ -24,7 +24,7 @@ def testCheckArguments():
 
 # Test del DeleteStore
 
-def TestDeleteStore():
+def testDeleteStore():
     assert pdfupload.DeleteStore() == True
 
 # Test de verificar la existencia del usuario
