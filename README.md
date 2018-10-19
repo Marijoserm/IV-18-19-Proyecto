@@ -69,6 +69,16 @@ Voy a utilizar [Travis](https://travis-ci.org/) como sistema de integración con
 
 ---
 
+### Despliegue
+
+[![Build Status](https://dev.azure.com/IVCloud/ProjectIV/_apis/build/status/Thejokeri.IV-18-19-Proyecto)](https://dev.azure.com/IVCloud/ProjectIV/_build/latest?definitionId=3)
+![Heroku](https://heroku-badge.herokuapp.com/?app=cloudncloud)
+
+* [Despliegue en Heroku](https://cloudncloud.herokuapp.com/)
+* [Despliegue en Azure](http://cloudncloud.azurewebsites.net/)
+
+---
+
 #### Colaboración
 
 Proyecto en colaboración con el proyecto: [Microservicio de Carlos](https://github.com/AGCarlos/IV_1819_Proyecto). Que se encargará de enviar los documentos a destinatarios.
