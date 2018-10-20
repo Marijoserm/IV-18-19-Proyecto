@@ -74,6 +74,12 @@ Voy a utilizar [Travis](https://travis-ci.org/) como sistema de integración con
 ![Heroku](https://heroku-badge.herokuapp.com/?app=cloudncloud)
 
 * [Despliegue en Heroku](https://cloudncloud.herokuapp.com/)
+  
+[![Build Status](https://dev.azure.com/IVCloud/ProjectIV/_apis/build/status/Thejokeri.IV-18-19-Proyecto)](https://dev.azure.com/IVCloud/ProjectIV/_build/latest?definitionId=3)
+![Heroku](https://heroku-badge.herokuapp.com/?app=cloudncloud)
+
+* [Despliegue en Heroku](https://cloudncloud.herokuapp.com/)
+* [Despliegue en Azure](http://cloudncloud.azurewebsites.net/)
 
 ---
 
