@@ -13,15 +13,13 @@ def status():
     salida = pdfupload.Status()
 
     if salida == 'OK':
-        f = open("status.json","r")
-        data = f.read()
-        response = app.response_class(
-            response=json.dumps(data),
-            status=200,
-            mimetype='application/json'
-        )
-        return response
+        with open('status.json') as f:
+            data = json.load(f)
+            response = app.response_class(response=json.dumps(data), status=200, mimetype='application/json')
         
+    
+    return response
+
 @app.route('/home')
 def home():
     return render_template('home.html')
