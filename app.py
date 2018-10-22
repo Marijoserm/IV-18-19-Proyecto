@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, json
 from pdfupload import PDFUpload
 
 app = Flask(__name__, template_folder='./templates/')
@@ -10,8 +10,18 @@ def index():
 
 @app.route('/status')
 def status():
-    return pdfupload.Status()
-    
+    salida = pdfupload.Status()
+
+    if salida == 'OK':
+        f = open("status.json","r")
+        data = f.read()
+        response = app.response_class(
+            response=json.dumps(data),
+            status=200,
+            mimetype='application/json'
+        )
+        return response
+        
 @app.route('/home')
 def home():
     return render_template('home.html')
