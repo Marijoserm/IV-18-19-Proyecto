@@ -128,3 +128,5 @@ dmypy.json
 *.ini
 *.sh
 Makefile
+*.css
+*.png
