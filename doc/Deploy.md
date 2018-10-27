@@ -4,7 +4,7 @@ Para el despliegue de la aplicación he utilizado Heroku y he seguido este [tuto
 
 El [tutorial](https://github.com/datademofun/heroku-basic-flask), está centrado en desplegar una aplicación en Flask en la nube a través de Heroku.
 
-Los pasos son los siguientes (aunque aconsejo seguir el tutorial ya que está muy detallado la explicación):
+Los pasos son los siguientes (aunque aconsejo seguir el tutorial ya que la explicación está más detallada):
 
 1. Nos registramos en Heroku.
 
@@ -28,7 +28,7 @@ Los pasos son los siguientes (aunque aconsejo seguir el tutorial ya que está mu
 
 7. Indicamos nuestra versión de python que va a ejecutar la **app.py** en el archivo ```runtime.txt```.
 
-8. Creamos un Procfile, que es un archivo de texto plano, en el cual, indicamo a Heroku de cómo poner en marcha nuestra wep app.
+8. Creamos un Procfile, que es un archivo de texto plano, en el cual, indicamos a Heroku cómo poner en marcha nuestra wep app.
 
     ```text
     web: gunicorn app:app --log-file=-
@@ -39,13 +39,13 @@ Los pasos son los siguientes (aunque aconsejo seguir el tutorial ya que está mu
     ```bash
     heroku create
     ```
-    Crea una aplicación con un nombre aleatorio, si deseamos que tenga un nombre le indicamos con este comando:
+    Crea una aplicación con un nombre aleatorio, si deseamos que tenga un nombre se lo indicamos con el siguiente comando:
 
     ```bash
         heroku create nombre
     ```
 
-10. Y por último, desplegar el código en de nuestra aplicación:
+10. Y por último, desplegar el código de nuestra aplicación:
 
     - Rama de Heroku:
 
