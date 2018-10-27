@@ -29,7 +29,7 @@ Estas son las herramientas que voy a utilizar parar la creación del microservic
 
 ### Descripción del microservicio
 
-El microservicio consta de una clase en la que se llevará a cabo todas las operaciones relacionadas con el microservicio, como la creación y eliminación de los usuarios determinados por un identificador correcto, además de toda la funcionalidades de añadido, eliminación y búsqueda de archivos. [Documentación de la clase](http://htmlpreview.github.io/?https://github.com/Thejokeri/IV-18-19-Proyecto/blob/master/doc/pdfupload.html) (Generado con pydoc):
+El microservicio consta de una clase en la que se llevará a cabo todas las operaciones relacionadas con el microservicio, como la creación y eliminación de los usuarios determinados por un identificador correcto, además de todas las funcionalidades de añadido, eliminación y búsqueda de archivos. [Documentación de la clase](http://htmlpreview.github.io/?https://github.com/Thejokeri/IV-18-19-Proyecto/blob/master/doc/pdfupload.html) (Generado con pydoc):
 
 ```bash
 pydoc -w pdfupload.py
@@ -39,7 +39,7 @@ La versión de Python que voy a utilizar es Python 2.7.15 ya que la versión mas
 
 Las [dependencias](./requirements.txt) que se han usado son las siguientes:
 
-* filedepot: permite almacenar los ficheros pdf en un directorio con nombre el identificador del fichero y en dentro del directorio, se alojará el binario del archivo, con un .json con los metadatos del fichero (nombre, fecha de creación, etc).
+* filedepot: permite almacenar los ficheros pdf en un directorio con nombre el identificador del fichero y dentro del directorio, se alojará el binario del archivo, con un .json con los metadatos del fichero (nombre, fecha de creación, etc).
   
 * pyPdf: se encarga de cifrar y descifrar el fichero.
   
