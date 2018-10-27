@@ -29,7 +29,11 @@ Estas son las herramientas que voy a utilizar parar la creación del microservic
 
 ### Descripción del microservicio
 
-El microservicio consta de una clase en la que se llevará a cabo todas las operaciones relacionadas con el microservicio, como la creación y eliminación de los usuarios determinados por un identificador correcto, además de toda la funcionalidades de añadido, eliminación y búsqueda de archivos. [Documentación de la clase](http://htmlpreview.github.io/?https://github.com/Thejokeri/IV-18-19-Proyecto/blob/master/doc/pdfupload.html) (Generado con pydoc).
+El microservicio consta de una clase en la que se llevará a cabo todas las operaciones relacionadas con el microservicio, como la creación y eliminación de los usuarios determinados por un identificador correcto, además de toda la funcionalidades de añadido, eliminación y búsqueda de archivos. [Documentación de la clase](http://htmlpreview.github.io/?https://github.com/Thejokeri/IV-18-19-Proyecto/blob/master/doc/pdfupload.html) (Generado con pydoc):
+
+```bash
+pydoc -w pdfupload.py
+```
 
 La versión de Python que voy a utilizar es Python 2.7.15 ya que la versión mas reciente, no me permite ejecutar DEPOT.
 
