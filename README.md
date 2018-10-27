@@ -39,7 +39,7 @@ La versión de Python que voy a utilizar es Python 2.7.15 ya que la versión mas
 
 Las [dependencias](./requirements.txt) que se han usado son las siguientes:
 
-* filedepot: permite almacenar los ficheros pdf en un directorio con nombre el identificador del fichero y en dentro del directorio, se alojará el binario del archivo, con un .json con los metadatos del fichero (nombre, fecha de creación, etc).
+* filedepot: permite almacenar los ficheros pdf en un directorio con nombre, el identificador del fichero, y en dentro del directorio, se alojará el binario del archivo, con un .json con los metadatos del fichero (nombre, fecha de creación, etc).
   
 * pyPdf: se encarga de cifrar y descifrar el fichero.
   
@@ -69,7 +69,7 @@ python pdfupload.py
 
 ### Sistema de integración continua
 
-Voy a utilizar [Travis](https://travis-ci.org/) como sistema de integración continua, para el testeo de la clase. Está totalmente configurada y vinculada con la cuenta de GitHub.
+Voy a utilizar [Travis](https://travis-ci.org/) como sistema de integración contínua, para el testeo de la clase. Está totalmente configurada y vinculada con la cuenta de GitHub.
 
 ---
 
